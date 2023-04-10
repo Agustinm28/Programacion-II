@@ -1,13 +1,3 @@
-/*
-Crear una clase Empleado con atributo nombre, apellido, legajo, aniosTrabajados
-Sobrescribir el método toString() para ver una representación entendible de un objeto de la clase
-Crear en la clase de arranque un Set de empleados.
-Crear 5 objetos empleado, donde 2 empleados tienen los mismos valores de atributos, agregarlos al set
-Iterar sobre el set y mostrar los objetos empleados
-Crear una herencia de la clase Empleado (EmpleadoSet) y modificarla para que cuando se agreguen EmpleadoSet a un set, los repetidos sean ignorados. Investigar como se hace.
-Crear 5 objetos empleadoSet, donde 2 empleados tienen los mismos valores de atributos, agregarlos al set
-Iterar sobre el set y mostrar los objetos empleados. Verificar que el duplicado no existe.
- */
 import java.util.HashSet;
 import java.util.Set;
 
