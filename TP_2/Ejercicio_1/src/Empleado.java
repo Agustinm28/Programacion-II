@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Empleado {
     private String nombre;
     private String apellido;
