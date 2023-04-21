@@ -24,8 +24,8 @@ public class Empleado {
     }
 
     public static Empleado fromString(String empleadoString) throws InvalidDataException{
-        Empleado empleado = null;                               // por ejemplo: empleadoString = "nombre=Pablo,apellido=Marquez,legajo=E001,aniosTrabajados=10"
-        String[] atributos = empleadoString.split(",");   // entonces atributos = ["nombre=Pablo", "apellido=Marquez", "legajo=E001", "aniosTrabajados=10"]
+        Empleado empleado = null;                               
+        String[] atributos = empleadoString.split(",");   
         if (atributos.length != 4) {
             throw new InvalidDataException("No están todos los campos presentes");
         }
@@ -33,14 +33,14 @@ public class Empleado {
         String apellido = "";
         String legajo = "";
         int aniosTrabajados = 0;
-        for (String atributo : atributos) {                           // por ejemplo; atributos = ["nombre=Pablo", "apellido=Marquez", "legajo=E001", "aniosTrabajados=10"]
-            String[] partes = atributo.split("=");              // partes = [["nombre", "Pablo"], ["apellido", "Marquez"], ...]
+        for (String atributo : atributos) {                           
+            String[] partes = atributo.split("=");              
             if (partes.length != 2) {
                 throw new InvalidDataException("El atributo " + partes[0].trim() + " no tiene valor");
             }
 
-            String nombreAtributo = partes[0].trim().toLowerCase();   // si se tiene la cadena " Hola, mundo! ", y se aplica la función .trim(), el resultado sería la cadena
-            String valorAtributo = partes[1].trim();                  // "Hola, mundo!", eliminando los espacios en blanco que existen antes y después del texto.
+            String nombreAtributo = partes[0].trim().toLowerCase();   
+            String valorAtributo = partes[1].trim();                  
             switch (nombreAtributo) {
                 case "nombre":
                     nombre = valorAtributo;
@@ -53,8 +53,8 @@ public class Empleado {
                     break;
                 case "aniostrabajados":
                     try {
-                        aniosTrabajados = Integer.parseInt(valorAtributo);  // "Integer.parseInt()" es un método estático de la clase "Integer",
-                                                                            // que se utiliza para convertir una cadena de caracteres que contiene un valor numérico en su representación numérica correspondiente.
+                        aniosTrabajados = Integer.parseInt(valorAtributo);  
+                                                                            
                         if (aniosTrabajados <= 0) {
                             throw new InvalidDataException("El valor de aniosTrabajados debe ser un numero mayor a cero");
                         }
@@ -102,10 +102,10 @@ public class Empleado {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true; // son la misma instancia
-        if (o == null || getClass() != o.getClass()) return false; // son de clases diferentes
-        Empleado empleado = (Empleado) o; // cast a Empleado
-        return Objects.equals(nombre, empleado.nombre) && // comparación de atributos
+        if (this == o) return true; 
+        if (o == null || getClass() != o.getClass()) return false; 
+        Empleado empleado = (Empleado) o; 
+        return Objects.equals(nombre, empleado.nombre) && 
                 Objects.equals(apellido, empleado.apellido) &&
                 Objects.equals(legajo, empleado.legajo) &&
                 aniosTrabajados == empleado.aniosTrabajados;
