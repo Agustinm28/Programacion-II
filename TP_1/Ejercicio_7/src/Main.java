@@ -12,13 +12,13 @@ public class Main {
 
         // Ejemplo de objeto con datos incompletos
         try {
-            Empleado empleado6 = Empleado.fromString("nombre=Agustin, apellido=Montaña, legajo=60160, aniosTrabajados=6");
+            Empleado empleado6 = Empleado.fromString("nombre=Agustin, apellido=Montaña, legajo=60160, aniosTrabajados=");
         } catch (Exception e) {
             System.out.println("\n" + e);
         }
 
         try {
-            Empleado empleado6 = Empleado.fromString("nombre=Agustin legajo=60160, aniosTrabajados=6");
+            Empleado empleado6 = Empleado.fromString("nombre=Agustin,legajo=60160,aniosTrabajados=6");
         } catch (Exception e) {
             System.out.println("\n" + e);
         }
@@ -34,6 +34,7 @@ public class Main {
         } catch (Exception e) {
             System.out.println("\n" + e);
         }
-
-        }
+    }
 }
+
+
