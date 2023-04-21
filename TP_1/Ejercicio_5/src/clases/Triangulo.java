@@ -1,3 +1,5 @@
+package clases;
+
 public class Triangulo implements FiguraGeometrica {
     private double x;
     private double y;

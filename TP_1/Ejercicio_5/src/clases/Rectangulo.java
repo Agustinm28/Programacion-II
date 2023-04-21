@@ -1,3 +1,5 @@
+package clases;
+
 public class Rectangulo implements FiguraGeometrica {
     private double x;
     private double y;

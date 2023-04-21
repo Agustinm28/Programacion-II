@@ -1,5 +1,10 @@
 import java.util.List;
 import java.util.ArrayList;
+import clases.Circulo;
+import clases.Rectangulo;
+import clases.Triangulo;
+import clases.ValorNegativoException;
+import clases.FiguraGeometrica;
 
 public class Main {
     public static void main(String[] args) {
