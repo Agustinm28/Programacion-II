@@ -35,8 +35,4 @@ public class Hilo extends Thread {
         }
     }
 
-    public static void main(String[] args) {
-        Hilo hilo = new Hilo("Nuevo hilo");
-        hilo.start();
-    }
 }
