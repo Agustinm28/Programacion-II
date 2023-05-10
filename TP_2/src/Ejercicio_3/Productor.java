@@ -9,10 +9,12 @@ public class Productor implements Runnable {
 
     private Buffer buffer;
     private String nombre;
+    private int cantidad;
 
-    public Productor(Buffer buffer, String nombre) {
+    public Productor(Buffer buffer, String nombre, int cantidad) {
         this.buffer = buffer;
         this.nombre = nombre;
+        this.cantidad = cantidad;
     }
 
     public Buffer getBuffer() {
@@ -33,9 +35,10 @@ public class Productor implements Runnable {
 
     @Override
     public void run() {
-        for (int i = 3; i <= 15; i++) {
+        for (int i = 0; i < cantidad; i++) {
             // Añade un valor entre 3 y 15 al buffer.
-            buffer.produce(i);
+            int value = (int) (Math.random() * 13) + 3;
+            buffer.produce(value);
         }
     }
 }

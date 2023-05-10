@@ -13,7 +13,7 @@ public class Main {
         Buffer buffer = new Buffer(40);
 
         // Creacion del hilo del Productor.
-        Productor Productor1 = new Productor(buffer, "Productor1");
+        Productor Productor1 = new Productor(buffer, "Productor1", 40);
         Thread producer = new Thread(Productor1);
 
         // Creacion del hilo del Consumidor.
@@ -30,9 +30,9 @@ public class Main {
 
         // Parte 2...
 
-        Buffer buffer2 = new Buffer(220);
+        Buffer buffer2 = new Buffer(120);
 
-        Productor Productor2 = new Productor(buffer2, "Productor2");
+        Productor Productor2 = new Productor(buffer2, "Productor2", 120);
         Thread producer2 = new Thread(Productor2);
 
         Consumidor Consumidor2 = new Consumidor(buffer2, "Consumidor2");
