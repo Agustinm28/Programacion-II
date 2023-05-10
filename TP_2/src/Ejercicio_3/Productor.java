@@ -2,22 +2,40 @@ package Ejercicio_3;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import Ejercicio_3.Buffer;
 
-class Productor implements Runnable {
-    private final Queue<Integer> queue;
 
-    public Productor(Queue<Integer> queue) {
-        this.queue = queue;
+public class Productor implements Runnable {
+
+    private Buffer buffer;
+    private String nombre;
+
+    public Productor(Buffer buffer, String nombre) {
+        this.buffer = buffer;
+        this.nombre = nombre;
+    }
+
+    public Buffer getBuffer() {
+        return buffer;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setBuffer(Buffer buffer) {
+        this.buffer = buffer;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     @Override
     public void run() {
-        for (int i = 0; i < 40; i++) {
-            int valor = (int) (Math.random() * 13) + 3; // Generar número aleatorio entre 3 y 15
-            synchronized (queue) { // Asegurar que la cola sea modificada por un solo hilo a la vez
-                queue.add(valor);
-                queue.notify(); // Notificar a los hilos en espera que hay un nuevo elemento en la cola
-            }
+        for (int i = 3; i <= 15; i++) {
+            // Añade un valor entre 3 y 15 al buffer.
+            buffer.produce(i);
         }
     }
 }

@@ -2,44 +2,55 @@ package Ejercicio_3;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import Ejercicio_3.Buffer;
 
-class Consumidor implements Runnable {
-    private final Queue<Integer> queue;
-    private final String nombre;
+public class Consumidor implements Runnable {
 
-    public Consumidor(Queue<Integer> queue, String nombre) {
-        this.queue = queue;
+    private Buffer buffer;
+    private String nombre;
+
+    public Consumidor(Buffer buffer, String nombre) {
+        this.buffer = buffer;
         this.nombre = nombre;
     }
 
-    private long calcularFactorial(int n) {
-        long resultado = 1;
-        for (int i = 2; i <= n; i++) {
-            resultado *= i;
-        }
-        return resultado;
+    public Buffer getBuffer() {
+        return buffer;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setBuffer(Buffer buffer) {
+        this.buffer = buffer;
     }
 
     @Override
     public void run() {
-        int valor;
-        synchronized (queue) { // Asegurar que la cola sea modificada por un solo hilo a la vez
-            while (queue.isEmpty()) { // Esperar si la cola está vacía
-                try {
-                    queue.wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            valor = queue.poll(); // Tomar el primer elemento de la cola
-        }
-        long resultado = calcularFactorial(valor);
-        System.out.println("Hilo " + nombre + " procesando la lista. Valor a calcular: " + valor + ". Resultado: " + resultado + ". Quedan " + queue.size() + " elementos en la lista por procesar.");
-        try {
-            Thread.sleep(5000); // Esperar 5 segundos
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        while (!buffer.isEmpty()) {
+            // Obtiene el siguiente valor del buffer.
+            int value = buffer.consume();
 
+            // Calcula el factorial.
+            long factorial = 1;
+            for (int i = 1; i <= value; i++) {
+                factorial *= i;
+            }
+
+            // Imprime resultados.
+            System.out.println("Hilo " + Thread.currentThread().getName() + " procesando la lista. Valor a calcular: " + value + ". Resultado: " + factorial);
+
+            // Espera de 5 segundos.
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
