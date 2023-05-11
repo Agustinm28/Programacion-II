@@ -37,7 +37,6 @@ public class Main {
 
         Consumidor Consumidor2 = new Consumidor(buffer2, "Consumidor2");
         Thread consumer2 = new Thread(Consumidor2);
-
         Consumidor Consumidor3 = new Consumidor(buffer2, "Consumidor3");
         Thread consumer3 = new Thread(Consumidor3);
 
